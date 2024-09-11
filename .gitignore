@@ -1,3 +1,4 @@
 # Folder view configuration files
 .DS_Store
 Desktop.ini
+autoload/plug.vim
