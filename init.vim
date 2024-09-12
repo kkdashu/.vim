@@ -1,10 +1,5 @@
-" set runtimepath^=~/.vim runtimepath+=~/.vim/after
-" let &packpath = &runtimepath
-" set termguicolors
-" source ~/.vimrc
-" source ~/.vim/.vimrc
-"
 set nocompatible
+" vim-plug $HOME/.local/share/nvim/site/autoload/
 call plug#begin()
   Plug 'preservim/nerdtree'
   Plug 'ctrlpvim/ctrlp.vim'
@@ -16,18 +11,14 @@ call plug#begin()
   Plug 'mileszs/ack.vim'
   Plug 'dart-lang/dart-vim-plugin'
   Plug 'udalov/kotlin-vim'
-  " Plug 'neoclide/coc.nvim'
   Plug 'hrsh7th/vim-vsnip'
   Plug 'hrsh7th/vim-vsnip-integ'
   Plug 'uarun/vim-protobuf'
   Plug 'dense-analysis/ale'
-  " Plug 'hsanson/vim-android'
   " Plug 'Neevash/awesome-flutter-snippets'
   Plug 'chemzqm/wxapp.vim'
-  " call minpac#add('github/copilot.vim')
   Plug 'voldikss/vim-translator'
-  " Plug 'iamcco/markdown-preview.nvim', {'do': 'packloadall! | call mkdp#util#install()'})
-  " Plug 'rescript-lang/vim-rescript'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
   Plug 'editorconfig/editorconfig-vim'
   " call minpac#add('wlangstroth/vim-racket')
   " 可以把 vim 内容发送到tmux session
@@ -37,7 +28,6 @@ call plug#begin()
   Plug 'rust-lang/rust.vim'
   Plug 'cespare/vim-toml'
 
-  " Plug 'github/copilot.vim'
   Plug 'Exafunction/codeium.vim'
   Plug 'posva/vim-vue'
 
@@ -89,8 +79,6 @@ let g:vsnip_snippet_dir = expand('~/.vim/vsnip-snippets/vsnips')
 
 ":autocmd FileType javascript xxx
 :autocmd filetype lisp,scheme,art setlocal equalprg=scmindent.rkt
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " NERDTree
 nmap <C-w>; :NERDTreeToggle<CR>
@@ -155,24 +143,9 @@ let g:tslime_visual_mapping = '<c-t>t'
 let g:tslime_vars_mapping = '<c-t>T'
 " }}}
 
-" js beautify
-" autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
-" autocmd FileType typescript noremap <buffer> <c-f> :call JsBeautify()<cr>
-" autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
-" autocmd FileType jsx  noremap <buffer> <c-f> :call JsxBeautify()<cr>
-" autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
-" autocmd FileType css  noremap <buffer> <c-f> :call CSSBeautify()<cr>
-" map <c-f> :call JsBeautify()<cr>
 
 " Use deoplete.
 " let g:deoplete#enable_at_startup = 1
-
-" tsuquyomi
-autocmd FileType typescript setlocal completeopt-=menu
-let g:tsuquyomi_completion_detail = 1
-let g:tsuquyomi_disable_quickfix = 1
-let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
-" nnoremap <leader>t :TsuGeterr<cr>
 
 " ag.vim
 " let g:ag_working_path_mode="r"
@@ -222,16 +195,7 @@ setlocal cinoptions-=(2s
 setlocal cinoptions+=(s
 " let g:dart_format_on_save = 1
 
-"dart vim-lsc
-" let g:lsc_auto_map = v:true
-" let g:lsc_server_commands = {'dart': 'dart_language_server'}
-" let g:lsc_enable_autocomplete = v:false
-
 autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
-
-" let g:android_sdk_path = expand('/Users/kkdashu/Library/Android/sdk')
-" let g:gradle_path = expand('/Users/kkdashu/.gradle')
-
 
 " vim-traslator
 """ Configuration example
