@@ -52,6 +52,7 @@ runtime macros/matchit.vim
 
 lua require('completion')
 lua require('lsp')
+lua require('command')
 
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
