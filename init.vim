@@ -14,7 +14,8 @@ call plug#begin()
   Plug 'hrsh7th/vim-vsnip'
   Plug 'hrsh7th/vim-vsnip-integ'
   Plug 'uarun/vim-protobuf'
-  Plug 'dense-analysis/ale'
+  " ale 会导致 ts 文件报很多错误
+  " Plug 'dense-analysis/ale'
   " Plug 'Neevash/awesome-flutter-snippets'
   Plug 'chemzqm/wxapp.vim'
   Plug 'voldikss/vim-translator'
