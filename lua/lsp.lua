@@ -3,12 +3,12 @@ local nvim_lsp = require('lspconfig')
 local on_attach = require('lsp_on_attach').on_attach
 
 -- languages
-local servers = {'pyright', 'gopls', 'rust_analyzer', 'ts_ls', 'lua_ls', 'dartls', 'html', 'marksman'}
+local languages = {'pyright', 'gopls', 'rust_analyzer', 'ts_ls', 'lua_ls', 'dartls', 'html', 'marksman'}
 
 -- setup nvim-cmp
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-for _, lsp in ipairs(servers) do
+for _, lsp in ipairs(languages) do
   local config = {
     on_attach = on_attach,
     capabilities = capabilities
