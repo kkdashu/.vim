@@ -121,9 +121,6 @@ nmap        S   <Plug>(vsnip-cut-text)
 xmap        S   <Plug>(vsnip-cut-text)
 
 
-" Ack
-nnoremap <C-f> :Ack! -i<SPACE>
-" nnoremap <C-f>w :Ack! -i <cword><SPACE>
 
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

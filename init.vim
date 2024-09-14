@@ -2,7 +2,7 @@ set nocompatible
 " vim-plug $HOME/.local/share/nvim/site/autoload/
 call plug#begin()
   Plug 'preservim/nerdtree'
-  Plug 'ctrlpvim/ctrlp.vim'
+  " Plug 'ctrlpvim/ctrlp.vim'
   Plug 'mxw/vim-jsx'
   Plug 'easymotion/vim-easymotion'
   Plug 'mg979/vim-visual-multi'
@@ -31,6 +31,9 @@ call plug#begin()
 
   Plug 'Exafunction/codeium.vim'
   Plug 'posva/vim-vue'
+
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
 
   " LSP
   Plug 'neovim/nvim-lspconfig'
@@ -63,6 +66,16 @@ let g:vsnip_filetypes = {}
 let g:vsnip_filetypes.javascriptreact = ['javascript']
 let g:vsnip_filetypes.typescriptreact = ['typescript']
 let g:vsnip_snippet_dir = expand('~/.vim/vsnip-snippets/vsnips')
+
+" telescope
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <C-f> <cmd>Telescope buffers<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
 
 
 " map <leader>s :shell<cr>
@@ -104,7 +117,7 @@ let NERDTreeIgnore = [
 nnoremap <C-w>w :NERDTreeFocus<CR>
 nnoremap <C-w>f :NERDTreeFind<CR>
 
-let g:ctrlp_working_path_mode = 'a'
+" let g:ctrlp_working_path_mode = 'a'
 
 " let g:ctrlp_cmd = 'CtrlPMRU'
 " nmap <C-o> :CtrlPMRU<CR>
@@ -115,11 +128,11 @@ let g:ctrlp_working_path_mode = 'a'
 " <C-i>
 
 " ctrlp
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn|miniprogram)|node_modules|jspm_modules|dist|build)$',
-  \ 'file': '\v\.(exe|so|dll|pyc)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
+" let g:ctrlp_custom_ignore = {
+"   \ 'dir':  '\v[\/](\.(git|hg|svn|miniprogram)|node_modules|jspm_modules|dist|build)$',
+"   \ 'file': '\v\.(exe|so|dll|pyc)$',
+"   \ 'link': 'some_bad_symbolic_links',
+"   \ }
 
 " easymotion
 map / <Plug>(easymotion-sn)
@@ -221,15 +234,15 @@ vmap <silent> <leader>T <Plug>TranslateWV
 "
 "
 "
-command Todo Ack! 'TODO'
-
-if has("autocmd")
-  " Highlight TODO, FIXME, NOTE, etc.
-  if v:version > 701
-    autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|BUG\|HACK\)')
-    autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
-  endif
-endif
+" command Todo Ack! 'TODO'
+" 
+" if has("autocmd")
+"   " Highlight TODO, FIXME, NOTE, etc.
+"   if v:version > 701
+"     autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|BUG\|HACK\)')
+"     autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
+"   endif
+" endif
 
 " 清理所有非当前的buffer
 function! ClearBuffersExceptCurrent()
