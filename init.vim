@@ -3,12 +3,12 @@ set nocompatible
 call plug#begin()
   Plug 'preservim/nerdtree'
   " Plug 'ctrlpvim/ctrlp.vim'
-  Plug 'mxw/vim-jsx'
+  " Plug 'mxw/vim-jsx'
   Plug 'easymotion/vim-easymotion'
   Plug 'mg979/vim-visual-multi'
   Plug 'tpope/vim-surround'
   Plug 'vim-airline/vim-airline'
-  Plug 'mileszs/ack.vim'
+  " Plug 'mileszs/ack.vim'
   Plug 'dart-lang/dart-vim-plugin'
   Plug 'udalov/kotlin-vim'
   Plug 'hrsh7th/vim-vsnip'
@@ -17,7 +17,7 @@ call plug#begin()
   " ale 会导致 ts 文件报很多错误
   " Plug 'dense-analysis/ale'
   " Plug 'Neevash/awesome-flutter-snippets'
-  Plug 'chemzqm/wxapp.vim'
+  " Plug 'chemzqm/wxapp.vim'
   Plug 'voldikss/vim-translator'
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
   Plug 'editorconfig/editorconfig-vim'
@@ -30,7 +30,9 @@ call plug#begin()
   Plug 'cespare/vim-toml'
 
   Plug 'Exafunction/codeium.vim'
-  Plug 'posva/vim-vue'
+  " Plug 'posva/vim-vue'
+
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
@@ -57,6 +59,7 @@ runtime macros/matchit.vim
 lua require('completion')
 lua require('lsp')
 lua require('command')
+lua require('plugins.treesitter')
 
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -231,18 +234,6 @@ vmap <silent> <leader>T <Plug>TranslateWV
 " @a 播发寄存器a里面的宏
 " :reg(全名:registers) 查看所有寄存器的内容 ( 宏就是保存在寄存器里面的操作序列)
 " "ap 粘贴命令 "a表示寄存器a中内容
-"
-"
-"
-" command Todo Ack! 'TODO'
-" 
-" if has("autocmd")
-"   " Highlight TODO, FIXME, NOTE, etc.
-"   if v:version > 701
-"     autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|BUG\|HACK\)')
-"     autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
-"   endif
-" endif
 
 " 清理所有非当前的buffer
 function! ClearBuffersExceptCurrent()
