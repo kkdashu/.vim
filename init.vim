@@ -66,9 +66,6 @@ lua require('command')
 lua require('plugins.treesitter')
 lua require('plugins.color')
 
-" => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " If you want to use snippet for multiple filetypes, you can `g:vsnip_filetypes` for it.
 let g:vsnip_filetypes = {}
 let g:vsnip_filetypes.javascriptreact = ['javascript']
@@ -86,23 +83,6 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 syntax enable
 set background=dark
-
-" map <leader>s :shell<cr>
-
-
-" Specify the behavior when switching between buffers
-" try
-"   set switchbuf=useopen,usetab,newtab
-"   set stal=2
-" catch
-" endtry
-
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
-
-":autocmd FileType javascript xxx
-:autocmd filetype lisp,scheme,art setlocal equalprg=scmindent.rkt
 
 " NERDTree
 nmap <C-w>; :NERDTreeToggle<CR>
@@ -194,8 +174,6 @@ function! ConceallevelToggle()
     endif
 endfunc
 
-" autocmd FileType json call ConceallevelToggle()
-autocmd FileType json syntax match Comment +\/\/.\+$+
 
 au BufNewFile,BufRead *.js, *.html, *.css, *.dart *.ts *.tsx *.jsx
   \ set tabstop=2 |
@@ -219,13 +197,16 @@ setlocal cinoptions-=(2s
 setlocal cinoptions+=(s
 " let g:dart_format_on_save = 1
 
+" autocmd FileType json call ConceallevelToggle()
+" autocmd FileType json syntax match Comment +\/\/.\+$+
+
 autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 autocmd BufNewFile,BufRead *.wxml set filetype=xml
 autocmd BufNewFile,BufRead *.wxss set filetype=css
-" use `set filetype` to override default filetype=xml for *.ts files
 autocmd BufNewFile,BufRead *.ts  set filetype=typescript
-" use `setfiletype` to not override any other plugins like ianks/vim-tsx
 autocmd BufNewFile,BufRead *.tsx set filetype=typescript
+
+:autocmd filetype lisp,scheme,art setlocal equalprg=scmindent.rkt
 
 " vim-traslator
 """ Configuration example
