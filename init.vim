@@ -11,8 +11,6 @@ call plug#begin()
   " Plug 'mileszs/ack.vim'
   Plug 'dart-lang/dart-vim-plugin'
   Plug 'udalov/kotlin-vim'
-  Plug 'hrsh7th/vim-vsnip'
-  Plug 'hrsh7th/vim-vsnip-integ'
   Plug 'uarun/vim-protobuf'
   " ale 会导致 ts 文件报很多错误
   " Plug 'dense-analysis/ale'
@@ -37,13 +35,15 @@ call plug#begin()
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
 
-  " LSP
+  " LSP & comp
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-buffer'
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/vim-vsnip'
+  Plug 'hrsh7th/vim-vsnip-integ'
   " Plug 'nvim-lua/completion-nvim'
 
   " Colorscheme
@@ -66,6 +66,28 @@ lua require('command')
 lua require('plugins.treesitter')
 lua require('plugins.color')
 
+" vsnip
+" Expand
+imap <expr> <C-k>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-k>'
+smap <expr> <C-k>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-k>'
+
+" Expand or jump
+imap <expr> <C-j>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-k>'
+smap <expr> <C-j>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-k>'
+
+" Jump forward or backward
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+
+" Select or cut text to use as $TM_SELECTED_TEXT in the next snippet.
+" See https://github.com/hrsh7th/vim-vsnip/pull/50
+nmap        s   <Plug>(vsnip-select-text)
+xmap        s   <Plug>(vsnip-select-text)
+nmap        S   <Plug>(vsnip-cut-text)
+xmap        S   <Plug>(vsnip-cut-text)
+
 " If you want to use snippet for multiple filetypes, you can `g:vsnip_filetypes` for it.
 let g:vsnip_filetypes = {}
 let g:vsnip_filetypes.javascriptreact = ['javascript']
@@ -81,6 +103,7 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
+" syntax
 syntax enable
 set background=dark
 
@@ -141,10 +164,10 @@ let g:niji_dark_colors = [
   \ ]
 
 "tslime {{{
-let g:tslime_ensure_trailing_newlines = 1
-let g:tslime_normal_mapping = '<c-t>t'
-let g:tslime_visual_mapping = '<c-t>t'
-let g:tslime_vars_mapping = '<c-t>T'
+" let g:tslime_ensure_trailing_newlines = 1
+" let g:tslime_normal_mapping = '<c-t>t'
+" let g:tslime_visual_mapping = '<c-t>t'
+" let g:tslime_vars_mapping = '<c-t>T'
 " }}}
 
 
