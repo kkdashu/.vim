@@ -17,6 +17,9 @@ for _, lsp in ipairs(languages) do
   if lsp == 'lua_ls' then
     config.settings = {
       Lua = {
+        runtime = {
+          version = "LuaJIT"
+        },
         diagnostics = {
           globals = {'vim'}
         }

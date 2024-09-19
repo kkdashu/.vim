@@ -13,16 +13,6 @@ set cursorline
 "使用鼠标(resize panel)
 " set mouse=a
 
-" comment_grey: { gui: #5C6370, cterm: 59, cterm16: 7 },
-" 注释颜色太暗了，调亮一点
-let g:onedark_color_overrides = {
-\ "comment_grey": {"gui": "#5C6370", "cterm": "246", "cterm16": "11" },
-\}
-let g:onedark_termcolors=256
-" Enable syntax highlighting
-syntax enable
-set background=dark
-colorscheme onedark
 
 
 " 高亮查找

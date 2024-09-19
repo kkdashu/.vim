@@ -45,6 +45,10 @@ call plug#begin()
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/nvim-cmp'
   " Plug 'nvim-lua/completion-nvim'
+
+  " Colorscheme
+  Plug 'arzg/vim-colors-xcode'
+  Plug 'navarasu/onedark.nvim'
 call plug#end()
 
 " 设置leader键
@@ -60,6 +64,7 @@ lua require('completion')
 lua require('lsp')
 lua require('command')
 lua require('plugins.treesitter')
+lua require('plugins.color')
 
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -79,7 +84,8 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-
+syntax enable
+set background=dark
 
 " map <leader>s :shell<cr>
 
@@ -214,6 +220,12 @@ setlocal cinoptions+=(s
 " let g:dart_format_on_save = 1
 
 autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
+autocmd BufNewFile,BufRead *.wxml set filetype=xml
+autocmd BufNewFile,BufRead *.wxss set filetype=css
+" use `set filetype` to override default filetype=xml for *.ts files
+autocmd BufNewFile,BufRead *.ts  set filetype=typescript
+" use `setfiletype` to not override any other plugins like ianks/vim-tsx
+autocmd BufNewFile,BufRead *.tsx set filetype=typescript
 
 " vim-traslator
 """ Configuration example
