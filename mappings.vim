@@ -87,10 +87,10 @@ inoremap <C-f> <Right>
 " inoremap <C-n> <Down>
 " inoremap <C-p> <Up>
 " 实现 (、[、{、"、'  输入后自动补全右边部分，光标也会位于中间位置
-inoremap ( ()<ESC>i
+" inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
 inoremap { {}<ESC>i
-inoremap < <><ESC>i
+" inoremap < <><ESC>i
 " inoremap " ""<ESC>i
 " inoremap ' ''<ESC>i
 
