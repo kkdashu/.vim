@@ -45,6 +45,8 @@ call plug#begin()
   Plug 'hrsh7th/vim-vsnip'
   Plug 'hrsh7th/vim-vsnip-integ'
   " Plug 'nvim-lua/completion-nvim'
+  "
+  Plug 'mfussenegger/nvim-jdtls'
 
   " Colorscheme
   Plug 'arzg/vim-colors-xcode'

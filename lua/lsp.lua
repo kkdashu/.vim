@@ -28,6 +28,7 @@ configs[key] = {
     }
 }
 
+-- java 配置在 ffplugin/java.lua 下
 for _, lsp in ipairs(languages) do
   local config = {
     on_attach = on_attach,
