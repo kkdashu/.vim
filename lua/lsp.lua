@@ -35,7 +35,27 @@ for _, lsp in ipairs(languages) do
     capabilities = capabilities
   }
 
-  if lsp == 'lua_ls' then
+  if lsp == "pyright" then
+    local function get_python_extra_path()
+        -- 获取 Python 版本
+        local python_version = vim.fn.trim(vim.fn.system("pdm info --python | xargs -I {} {} -c 'import sys; print(f\"{sys.version_info.major}.{sys.version_info.minor}\")'"))
+        if python_version and python_version ~= "" then
+            return ".venv/lib/python" .. python_version .. "/site-packages"
+        else
+            return nil
+        end
+    end
+    config.settings = {
+      python = {
+        pythonPath = vim.fn.trim(vim.fn.system('pdm info --python')),
+        analysis = {
+          -- extraPaths = { get_python_extra_path() },
+          extraPaths = { ".venv/lib/python3.12/site-packages" },
+        }
+      }
+    }
+
+  elseif lsp == 'lua_ls' then
     config.settings = {
       Lua = {
         runtime = {
