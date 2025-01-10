@@ -62,11 +62,12 @@ source ~/.config/nvim/mappings.vim
 
 runtime macros/matchit.vim
 
-lua require('completion')
-lua require('lsp')
-lua require('command')
+lua require('setting')
 lua require('plugins.treesitter')
 lua require('plugins.color')
+lua require('lsp')
+lua require('completion')
+lua require('command')
 
 " vsnip
 " Expand
