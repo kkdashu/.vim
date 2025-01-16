@@ -65,6 +65,7 @@ runtime macros/matchit.vim
 lua require('setting')
 lua require('plugins.treesitter')
 lua require('plugins.color')
+lua require('plugins.telescope')
 lua require('lsp')
 lua require('completion')
 lua require('command')
