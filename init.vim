@@ -202,11 +202,11 @@ function! ConceallevelToggle()
 endfunc
 
 
-au BufNewFile,BufRead *.js, *.html, *.css, *.dart *.ts *.tsx *.jsx
-  \ set tabstop=2 |
-  \ set softtabstop=2 |
-  \ set shiftwidth=2 |
-  \ set textwidth=60
+" au BufNewFile,BufRead *.js, *.html, *.css, *.dart *.ts *.tsx *.jsx
+"   \ set tabstop=2 |
+"   \ set softtabstop=2 |
+"   \ set shiftwidth=2 |
+"   \ set textwidth=60
 
 au BufNewFile,BufRead *.py
   \ set tabstop=4 |

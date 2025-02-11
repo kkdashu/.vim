@@ -66,6 +66,25 @@ for _, lsp in ipairs(languages) do
         }
       }
     }
+  elseif lsp == 'rust_analyzer' then
+    config.settings = {
+     ["rust-analyzer"] = {
+            imports = {
+                granularity = {
+                    group = "module",
+                },
+                prefix = "self",
+            },
+            cargo = {
+                buildScripts = {
+                    enable = true,
+                },
+            },
+            procMacro = {
+                enable = true
+            },
+        }
+    }
   elseif lsp == 'gopls' then
     config.settings = {
       gopls = {
