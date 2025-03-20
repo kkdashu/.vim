@@ -36,21 +36,35 @@ for _, lsp in ipairs(languages) do
   }
 
   if lsp == "pyright" then
+    local function get_python_path()
+        local python_path = vim.fn.trim(vim.fn.system("which python"))
+        return python_path
+    end
+
+    local function remove_last_part(str)
+        local last_dot_index = string.find(str, "%.[^%.]*$")
+        if last_dot_index then
+            return string.sub(str, 1, last_dot_index - 1)
+        end
+        return str  -- 如果没有点，返回原字符串
+    end
+
     local function get_python_extra_path()
-        -- 获取 Python 版本
-        local python_version = vim.fn.trim(vim.fn.system("pdm info --python | xargs -I {} {} -c 'import sys; print(f\"{sys.version_info.major}.{sys.version_info.minor}\")'"))
+        -- 获取当前 Python 版本 3.11.11 -> 3.11
+        local python_version = remove_last_part(vim.fn.trim(vim.fn.system("pyenv version-name")))
         if python_version and python_version ~= "" then
-            return ".venv/lib/python" .. python_version .. "/site-packages"
+            local path = vim.fn.expand(".venv/lib/python" .. python_version .. "/site-packages")
+            return path
         else
             return nil
         end
     end
     config.settings = {
       python = {
-        pythonPath = vim.fn.trim(vim.fn.system('pdm info --python')),
+        pythonPath = get_python_path(),
         analysis = {
-          -- extraPaths = { get_python_extra_path() },
-          extraPaths = { ".venv/lib/python3.12/site-packages" },
+          extraPaths = { get_python_extra_path() },
+          -- extraPaths = { ".venv/lib/python3.12/site-packages" },
         }
       }
     }
@@ -92,7 +106,7 @@ for _, lsp in ipairs(languages) do
       }
     }
   elseif lsp == 'ts_ls' then
-    config.root_dir = nvim_lsp.util.root_pattern("package.json")
+    config.root_dir = nvim_lsp.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json")
     config.single_file_support = false
   elseif lsp == 'denols' then
     config.root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc")
