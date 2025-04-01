@@ -105,16 +105,47 @@ for _, lsp in ipairs(languages) do
         buildFlags = {'-tags=integration'}
       }
     }
-  elseif lsp == 'volar' then
-    config.settings = {
-      init_options = {
-          typescript = {
-          }
-        }
-    }
   elseif lsp == 'ts_ls' then
+    config.init_options = {
+      plugins = {
+        {
+          name = "@vue/typescript-plugin",
+          location = "/usr/local/lib/node_modules/@vue/language-server",
+          languages = {"vue"},
+        }
+      }
+    }
+    config.filetypes = { 'vue', 'typescript', 'javascript', 'javascriptreact', 'typescriptreact' }
     config.root_dir = nvim_lsp.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json")
     config.single_file_support = false
+  elseif lsp == 'volar' then
+    config.init_options = {
+      vue = {
+        hybridMode = true,
+      }
+    }
+    config.settings = {
+      typescript = {
+        inlayHints = {
+          enumMemberValues = {
+            enabled = true,
+          },
+          functionLikeReturnTypes = {
+            enabled = true,
+          },
+          propertyDeclarationTypes = {
+            enabled = true,
+          },
+          parameterTypes = {
+            enabled = true,
+            suppressWhenArgumentMatchesName = true,
+          },
+          variableTypes = {
+            enabled = true,
+          },
+        },
+      },
+    }
   elseif lsp == 'denols' then
     config.root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc")
   end
