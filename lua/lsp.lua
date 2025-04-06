@@ -5,7 +5,10 @@ local util = require('lspconfig.util')
 local on_attach = require('lsp_on_attach').on_attach
 
 -- languages
-local languages = {'pyright', 'gopls', 'rust_analyzer', 'ts_ls', 'lua_ls', 'dartls', 'html', 'marksman', 'protobuf-language-server', 'sqls', 'denols', 'volar', 'tailwindcss'}
+local languages = {'pyright', 'gopls', 'rust_analyzer', 'ts_ls', 'lua_ls', 'dartls', 'html', 'marksman', 'protobuf-language-server', 'sqls', 'denols', 'volar', 'tailwindcss', 'html', 'cssls'}
+
+-- html、cssls
+-- npm i -g vscode-langservers-extracted
 
 -- setup nvim-cmp
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -118,6 +121,17 @@ for _, lsp in ipairs(languages) do
     config.filetypes = { 'vue', 'typescript', 'javascript', 'javascriptreact', 'typescriptreact' }
     config.root_dir = nvim_lsp.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json")
     config.single_file_support = false
+  elseif lsp == 'tailwindcss' then
+    config.settings = {
+      tailwindCSS = {
+        experimental = {
+          classRegex = {
+            { "cva\\(((?:[^()]|\\([^()]*\\))*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+            { "cx\\(((?:[^()]|\\([^()]*\\))*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" }
+          }
+        }
+      }
+    }
   elseif lsp == 'volar' then
     config.init_options = {
       vue = {
