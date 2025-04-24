@@ -36,7 +36,7 @@ call plug#begin()
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
 
   Plug 'catgoose/nvim-colorizer.lua'
-  Plug 'uga-rosa/ccc.nvim'
+  " Plug 'uga-rosa/ccc.nvim'
 
   " LSP & comp
   Plug 'neovim/nvim-lspconfig'
@@ -54,6 +54,23 @@ call plug#begin()
   " Colorscheme
   Plug 'arzg/vim-colors-xcode'
   Plug 'navarasu/onedark.nvim'
+
+  " avante
+  Plug 'stevearc/dressing.nvim'
+  " Plug 'nvim-lua/plenary.nvim'
+  Plug 'MunifTanjim/nui.nvim'
+  Plug 'MeanderingProgrammer/render-markdown.nvim'
+  " 可选依赖项
+  " Plug 'hrsh7th/nvim-cmp'
+  Plug 'nvim-tree/nvim-web-devicons'
+  Plug 'HakonHarnes/img-clip.nvim'
+  Plug 'zbirenbaum/copilot.lua'
+
+  " Yay，如果您想从源代码构建，请传递 source=true
+  Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
+
+  " augment
+  Plug 'augmentcode/augment.vim'
 call plug#end()
 
 " 设置leader键
@@ -72,6 +89,9 @@ lua require('plugins.telescope')
 lua require('lsp')
 lua require('completion')
 lua require('command')
+lua require('plugins.avante')
+lua require('plugins.augment')
+
 
 " vsnip
 " Expand
