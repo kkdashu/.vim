@@ -1,10 +1,29 @@
 local avante = require("avante")
 require('avante_lib').load()
 local config = {
-  provider = "aihubmix",
+  -- provider = "aihubmix",
+  provider = "deepseek",
+  vendors = {
+    aihubmix = {
+      -- model = "gemini-2.0-flash-lite"
+      model = "gpt-4.1-mini",
+    },
+    deepseek = {
+      __inherited_from = "openai",
+      api_key_name = "DEEPSEEK_API_KEY",
+      endpoint = "https://api.deepseek.com",
+      model = "deepseek-coder",
+    },
+    qianwen = {
+      __inherited_from = "openai",
+      api_key_name = "DASHSCOPE_API_KEY",
+      endpoint = "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      model = "qwen-coder-plus-latest",
+    },
+  },
   aihubmix = {
     -- model = "gemini-2.0-flash-lite"
-    model = "gpt-4.1-mini",
+    -- model = "gpt-4.1-mini",
   },
   chat_history = {
     enabled = true,
