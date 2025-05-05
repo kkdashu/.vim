@@ -27,7 +27,7 @@ call plug#begin()
   Plug 'rust-lang/rust.vim'
   Plug 'cespare/vim-toml'
 
-  Plug 'Exafunction/codeium.vim'
+  " Plug 'Exafunction/codeium.vim'
   " Plug 'posva/vim-vue'
 
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
