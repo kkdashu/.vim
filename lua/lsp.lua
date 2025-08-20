@@ -89,11 +89,24 @@ for _, lsp in ipairs(languages) do
       }
     }
   elseif lsp == 'ts_ls' then
+    -- 找到 vue-language-server 可执行文件
+    local vue_ls_bin = vim.fn.exepath("vue-language-server")
+
+    -- 如果找不到，就返回 nil
+    local vue_plugin_location = nil
+    if vue_ls_bin ~= "" then
+      -- vue-language-server 通常在 .../node_modules/.bin/vue-language-server
+      -- 所以取上两级目录，拼接到 @vue/language-server
+      local root = vim.fn.fnamemodify(vue_ls_bin, ":h:h")
+      vue_plugin_location = root .. "/lib/node_modules/@vue/language-server"
+    end
+    print('location', vue_plugin_location)
     config.init_options = {
       plugins = {
         {
           name = "@vue/typescript-plugin",
-          location = "/usr/local/lib/node_modules/@vue/language-server",
+          -- location = "/Users/kkdashu/.nvm/versions/node/v22.12.0/lib/node_modules/@vue/language-server",
+          location = vue_plugin_location,
           languages = {"vue"},
         }
       }

@@ -55,6 +55,7 @@ call plug#begin()
   Plug 'arzg/vim-colors-xcode'
   Plug 'navarasu/onedark.nvim'
 
+  Plug 'echasnovski/mini.nvim'
   " avante
   Plug 'stevearc/dressing.nvim'
   " Plug 'nvim-lua/plenary.nvim'
