@@ -3,7 +3,7 @@ require('avante_lib').load()
 local config = {
   -- provider = "aihubmix",
   provider = "deepseek",
-  vendors = {
+  providers = {
     aihubmix = {
       -- model = "gemini-2.0-flash-lite"
       model = "gpt-4.1-mini",
@@ -21,10 +21,10 @@ local config = {
       model = "qwen-coder-plus-latest",
     },
   },
-  aihubmix = {
+  --aihubmix = {
     -- model = "gemini-2.0-flash-lite"
     -- model = "gpt-4.1-mini",
-  },
+  --},
   chat_history = {
     enabled = true,
     max_history = 50,
